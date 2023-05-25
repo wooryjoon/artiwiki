@@ -9,7 +9,7 @@ import ArtistCard from "../../Components/Common/ArtistCard/ArtistCard";
 import { tokenActions } from "../../store/tokenSlice";
 
 export default function SearchPage(): JSX.Element {
-  const CLIENT_ID = "d8403ad90bb14d97bc6037c2052f4c4c";
+  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const REDIRECT_URI = "http://localhost:3000";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
@@ -30,38 +30,37 @@ export default function SearchPage(): JSX.Element {
       window.location.hash = "";
     }
   }, []);
-  console.log(token);
+
+  if (!token)
+    return (
+      <div className="searchPage_content_notLogin">
+        <h1>
+          You have to Login by your{" "}
+          <span style={{ color: "rgb(0, 255, 0)" }}>SPOTIFY</span> Account
+        </h1>
+        <a href={LOGIN_API_LINK}>
+          Click Here to Login <span>!</span>
+        </a>
+      </div>
+    );
+
   return (
     <div className="searchPage_container">
-      {token ? (
-        <div className="searchPage_content_login">
-          <h1>Find Your Favorite Artist</h1>
-          <form onSubmit={searchArtists}>
-            <div className="inputContainer">
-              <input type="text" onChange={searchKeyHandler} />
-              <button type="submit">Search</button>
-            </div>
-          </form>
-          <div className="artistCardsList">
-            {isLoading && <div>isLoading</div>}
-            {artistData.map((artist) => {
-              return <ArtistCard key={artist.id} artist={artist} />;
-            })}
+      <div className="searchPage_content_login">
+        <h1>Find Your Favorite Artist</h1>
+        <form onSubmit={searchArtists}>
+          <div className="inputContainer">
+            <input type="text" onChange={searchKeyHandler} />
+            <button type="submit">Search</button>
           </div>
+        </form>
+        <div className="artistCardsList">
+          {isLoading && <div>isLoading</div>}
+          {artistData.map((artist) => {
+            return <ArtistCard key={artist.id} artist={artist} />;
+          })}
         </div>
-      ) : (
-        // 미 로그인 화면
-        <div className="searchPage_content_notLogin">
-          <h1>
-            You have to Login by your{" "}
-            <span style={{ color: "rgb(0, 255, 0)" }}>SPOTIFY</span> Account
-          </h1>
-          <a href={LOGIN_API_LINK}>
-            Click Here to Login <span>!</span>
-          </a>
-        </div>
-      )}
-      <div></div>
+      </div>
     </div>
   );
 

@@ -1,1 +1,45 @@
-/*# sourceMappingURL=ArtistDetailPage.css.map */
+.detailContainer {
+  width: 1200px;
+  height: 600px;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.detailImgContainer {
+  width: 400px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.detailImgContainer img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.detailInfoContainer {
+  width: 600px;
+  height: 500px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailInfoContainer .detailInfo {
+  display: flex;
+  flex-direction: column;
+}
+.detailInfoContainer .detailInfo .detailInfoTitle {
+  margin-bottom: 5px;
+  color: rgb(0, 255, 120);
+}
+
+.albumListContainer {
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: center;
+}/*# sourceMappingURL=ArtistDetailPage.css.map */

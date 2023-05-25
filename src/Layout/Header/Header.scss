@@ -1,7 +1,8 @@
 .header-container {
   width: 100%;
   height: 50px;
-  position: fixed;
+  position: sticky;
+  top: 0;
   background-color: #1a273e;
   color: rgb(0, 255, 0);
   font-weight: bold;

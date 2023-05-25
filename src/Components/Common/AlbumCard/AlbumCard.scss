@@ -1,0 +1,33 @@
+.albumCardContainer {
+  width: 140px;
+  height: 140px;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  overflow: hidden;
+  a {
+    width: 100%;
+    height: 100%;
+  }
+}
+.albumImgContainer {
+  height: 80%;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.albumTitle {
+  height: 20%;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
